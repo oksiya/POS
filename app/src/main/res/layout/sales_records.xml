@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:hint="@string/account"
+        android:layout_weight="14.28"
+        android:id="@+id/account"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:hint="@string/date"
+        android:layout_weight="14.28"
+        android:id="@+id/date"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:hint="@string/category_group"
+        android:layout_weight="14.28"
+        android:id="@+id/category"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:hint="@string/item_name"
+        android:layout_weight="14.28"
+        android:id="@+id/name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:hint="@string/item_code"
+        android:layout_weight="14.28"
+        android:id="@+id/code"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:hint="@string/debit"
+        android:layout_weight="14.28"
+        android:id="@+id/debit"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:hint="@string/credit"
+        android:layout_weight="14.28"
+        android:id="@+id/credit"
+        tools:ignore="VisualLintBounds" />
+
+
+</LinearLayout>

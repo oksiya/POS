@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/PurchaseFragment"
+    tools:context=".Purchase">
+
+
+    <ScrollView
+        android:id="@+id/CategoryScrollView"
+        android:layout_width="203dp"
+        android:layout_height="354dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline3">
+
+        <LinearLayout
+            android:id="@+id/ScrollCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/cat1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_1" />
+
+            <Button
+                android:id="@+id/cat2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_2" />
+
+            <Button
+                android:id="@+id/cat3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_3" />
+
+            <Button
+                android:id="@+id/cat4"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_4" />
+
+            <Button
+                android:id="@+id/cat5"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_5" />
+
+            <Button
+                android:id="@+id/cat6"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_6" />
+
+            <Button
+                android:id="@+id/cat7"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_7" />
+
+            <Button
+                android:id="@+id/cat8"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_8" />
+
+            <Button
+                android:id="@+id/cat9"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_9" />
+
+            <Button
+                android:id="@+id/cat10"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category_10" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="386dp"
+        android:layout_height="307dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="parent"></ListView>
+
+    <include layout="@layout/adapterview"/>
+
+    <LinearLayout
+        android:layout_width="159dp"
+        android:layout_height="350dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guideline3">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:layout_height="90dp"
+            android:text="@string/total" />
+
+        <Button
+            android:id="@+id/pay"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:text="@string/pay" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/delete" />
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:text="@string/done" />
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="329dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="181dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="395dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="10dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="699dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

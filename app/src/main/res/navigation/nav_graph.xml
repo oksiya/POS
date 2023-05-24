@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/OptionFragment">
+
+
+    <fragment
+        android:id="@+id/OptionFragment"
+        android:name="com.example.pos.Options"
+        android:label="@string/option_fragment"
+        tools:layout="@layout/fragment_options">
+
+        <action
+            android:id="@+id/option_to_sell"
+            app:destination="@id/PurchaseFragment" />
+        <action
+            android:id="@+id/option_to_cash"
+            app:destination="@id/PettyCash" />
+        <action
+            android:id="@+id/option_to_records"
+            app:destination="@id/RecordsFragment" />
+        <action
+            android:id="@+id/option_to_receive"
+            app:destination="@id/ReceiveStockFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/PurchaseFragment"
+        android:name="com.example.pos.Purchase"
+        android:label="@string/purchase_fragment"
+        tools:layout="@layout/fragment_purchase">
+        <action
+            android:id="@+id/to_items"
+            app:destination="@+id/CategoryItem"/>
+        <action
+            android:id="@+id/to_payment"
+            app:destination="@+id/PaymentFragment"/>
+        <action
+            android:id="@+id/back_home"
+            app:destination="@id/OptionFragment" />
+
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/PettyCash"
+        android:name="com.example.pos.PettyCash"
+        android:label="@string/cash_fragment"
+        tools:layout="@layout/fragment_petty_cash">
+        <action
+            android:id="@+id/to_petty_cash"
+            app:destination="@+id/Cash"/>
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/Cash"
+        android:name="com.example.pos.CashFragment"
+        android:label="@string/cash_fragment"
+        tools:layout="@layout/fragment_cash">
+        <action
+            android:id="@+id/after_petty_cash"
+            app:destination="@+id/OptionFragment"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/RecordsFragment"
+        android:name="com.example.pos.Records"
+        android:label="@string/records_fragment"
+        tools:layout="@layout/fragment_records">
+
+        <action
+            android:id="@+id/to_view"
+            app:destination="@+id/ViewRecords" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/ReceiveStockFragment"
+        android:name="com.example.pos.ReceiveStock"
+        android:label="@string/receive_fragment"
+        tools:layout="@layout/fragment_receive_stock">
+        <action
+            android:id="@+id/after_receiving"
+            app:destination="@+id/OptionFragment"/>
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/CategoryItem"
+        android:name="com.example.pos.CategoryFragment"
+        android:label="@string/items_in_category_fragment"
+        tools:layout="@layout/fragment_category">
+
+        <action
+            android:id="@+id/after_item"
+            app:destination="@+id/PurchaseFragment"/>
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/PaymentFragment"
+        android:name="com.example.pos.MakePayment"
+        android:label="@string/payment_fragment"
+        tools:layout="@layout/fragment_make_payment">
+
+        <action
+            android:id="@+id/after_pay"
+            app:destination="@+id/PurchaseFragment"/>
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/ViewRecords"
+        android:name="com.example.pos.ViewRecords"
+        android:label="@string/view_records"
+        tools:layout="@layout/fragment_view_records">
+
+        <action
+            android:id="@+id/after_view"
+            app:destination="@+id/OptionFragment"/>
+
+
+    </fragment>
+</navigation>

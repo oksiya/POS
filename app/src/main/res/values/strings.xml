@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">POS</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="option_fragment">Options</string>
+    <string name="purchase_fragment">Entry Sale</string>
+    <string name="cash_fragment">Petty Cash</string>
+    <string name="receive_fragment">Receive Stock</string>
+    <string name="records_fragment">Records</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Strings for options -->
+    <string name="selling">Selling</string>
+    <string name="petty_cash">Petty Cash</string>
+    <string name="receive_stock">Receive Stock</string>
+    <string name="records">Records</string>
+
+    <!-- Strings for selling -->
+    <string name="category_1">Category1</string>
+    <string name="category_2">Category2</string>
+    <string name="category_3">Category3</string>
+    <string name="category_4">Category4</string>
+    <string name="category_5">Category5</string>
+    <string name="category_6">Category6</string>
+    <string name="category_7">Category7</string>
+    <string name="category_8">Category8</string>
+    <string name="category_9">Category9</string>
+    <string name="category_10">Category10</string>
+
+    <string name="total">Total</string>
+    <string name="pay">Pay</string>
+    <string name="delete">Delete</string>
+    <string name="done">Done</string>
+
+
+    <!-- Strings for petty cash -->
+    <string name="add_cash">Add Cash</string>
+    <string name="draw_cash">Withdraw Cash</string>
+    <string name="account_name">Description</string>
+    <string name="amount">Amount</string>
+
+    <!-- Strings for receive stock -->
+    <string name="category_group">Category</string>
+    <string name="item_name">Name</string>
+    <string name="item_code">Code</string>
+    <string name="item_price">Price</string>
+    <string name="item_quantity">QTY</string>
+    <string name="receive_item">Receive Item</string>
+
+    <!-- Strings for records -->
+    <string name="view_records">Record Viewer</string>
+    <string name="record_sales">Sales</string>
+    <string name="record_stock">Stock</string>
+    <string name="title_activity_options">POS</string>
+    <string name="download">Download</string>
+    <string name="debit">Debit</string>
+    <string name="credit">Credit</string>
+    <string name="account">Account</string>
+    <string name="date">Date</string>
+
+
+
+    <!-- Strings for payment -->
+    <string name="payment_fragment">Select Note/Coin</string>
+    <string name="done_pay">Done</string>
+    <string name="clear">Clear</string>
+    <string name="enter_money">Enter Money</string>
+    <string name="ten_cents">10c</string>
+    <string name="twenty_cents">20c</string>
+    <string name="fifty_cents">50c</string>
+    <string name="one_rand">R1</string>
+    <string name="two_rands">R2</string>
+    <string name="five_rands">R5</string>
+    <string name="ten_rands">R10</string>
+    <string name="twenty_rands">R20</string>
+    <string name="fifty_rands">R50</string>
+    <string name="hundred_rands">R100</string>
+    <string name="two_hundred_rands">R200</string>
+
+    <!-- Strings for items in category -->
+    <string name="items_in_category_fragment">ITEMS</string>
+    <string name="empty_button">Item</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
