@@ -27,61 +27,73 @@
                 android:id="@+id/cat1"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_1" />
+                android:text="@string/category" />
 
             <Button
                 android:id="@+id/cat2"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_2" />
+                android:text="@string/category" />
 
             <Button
                 android:id="@+id/cat3"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_3" />
+                android:text="@string/category" />
 
             <Button
                 android:id="@+id/cat4"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_4" />
+                android:text="@string/category" />
 
             <Button
                 android:id="@+id/cat5"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_5" />
+                android:text="@string/category" />
 
             <Button
                 android:id="@+id/cat6"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_6" />
+                android:text="@string/category" />
 
             <Button
                 android:id="@+id/cat7"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_7" />
+                android:text="@string/category" />
 
             <Button
                 android:id="@+id/cat8"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_8" />
+                android:text="@string/category" />
 
             <Button
                 android:id="@+id/cat9"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_9" />
+                android:text="@string/category" />
 
             <Button
                 android:id="@+id/cat10"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="@string/category_10" />
+                android:text="@string/category" />
+
+            <Button
+                android:id="@+id/cat11"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category" />
+
+            <Button
+                android:id="@+id/cat12"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/category" />
 
         </LinearLayout>
     </ScrollView>

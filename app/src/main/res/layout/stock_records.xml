@@ -10,48 +10,45 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:textAlignment="center"
         android:textSize="20sp"
-        android:hint="@string/date"
-        android:layout_weight="20"
+        android:layout_weight="16.6"
         android:id="@+id/dateStock"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:textAlignment="center"
         android:textSize="20sp"
-        android:hint="@string/category_group"
-        android:layout_weight="20"
+        android:layout_weight="16.6"
         android:id="@+id/categoryStock"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:textAlignment="center"
         android:textSize="20sp"
-        android:hint="@string/item_name"
-        android:layout_weight="20"
+        android:layout_weight="16.6"
         android:id="@+id/nameStock"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:textAlignment="center"
         android:textSize="20sp"
-        android:hint="@string/item_code"
-        android:layout_weight="20"
+        android:layout_weight="16.6"
         android:id="@+id/codeStock"/>
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:textAlignment="center"
         android:textSize="20sp"
-        android:hint="@string/item_price"
-        android:layout_weight="20"
+        android:layout_weight="16.6"
         android:id="@+id/priceStock"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_weight="16.6"
+        android:id="@+id/quantityStock"/>
 
 </LinearLayout>

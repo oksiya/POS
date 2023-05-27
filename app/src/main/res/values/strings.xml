@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">POS</string>
+    <string name="action_home">Home</string>
+    <string name="action_logout">Logout</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="option_fragment">Options</string>
@@ -20,16 +22,8 @@
     <string name="records">Records</string>
 
     <!-- Strings for selling -->
-    <string name="category_1">Category1</string>
-    <string name="category_2">Category2</string>
-    <string name="category_3">Category3</string>
-    <string name="category_4">Category4</string>
-    <string name="category_5">Category5</string>
-    <string name="category_6">Category6</string>
-    <string name="category_7">Category7</string>
-    <string name="category_8">Category8</string>
-    <string name="category_9">Category9</string>
-    <string name="category_10">Category10</string>
+    <string name="category">Category</string>
+
 
     <string name="total">Total</string>
     <string name="pay">Pay</string>
@@ -42,6 +36,7 @@
     <string name="draw_cash">Withdraw Cash</string>
     <string name="account_name">Description</string>
     <string name="amount">Amount</string>
+    <string name="update_price">Update Price</string>
 
     <!-- Strings for receive stock -->
     <string name="category_group">Category</string>

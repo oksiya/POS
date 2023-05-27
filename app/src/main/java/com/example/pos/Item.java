@@ -6,12 +6,15 @@ public class Item {
     private String name;
     private int code;
     private double price;
+    private int quantity;
 
-    public Item(String category, String name, int code, double price) {
+
+    public Item(String category, String name, int code, double price, int quantity) {
         this.category = category;
         this.name = name;
         this.code = code;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public String getCategory() {
@@ -45,10 +48,26 @@ public class Item {
     public void setPrice(double price) {
         this.price = price;
     }
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String toString()
     {
         return name.toUpperCase() + "\t" + code + "\t "
                 + price;
+    }
+
+    public String toConfirm()
+    {
+        return "Category : "+ category+ "\n"+
+                "Name : "+ name+ "\n"+
+                "Code : "+ code+ "\n"+
+                "Price : "+ price+ "\n"+
+                "Quantity : "+ quantity;
     }
 }

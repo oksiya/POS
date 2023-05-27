@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -16,9 +17,12 @@ import android.view.ViewGroup;
 import com.example.pos.databinding.FragmentFirstBinding;
 import com.example.pos.databinding.FragmentRecordsBinding;
 
+import org.jetbrains.annotations.Nullable;
+
 public class Records extends Fragment {
 
     private FragmentRecordsBinding binding;
+    private RecordsViewModel recordsViewModel;
     private SharedPreferences sharedPreferences;
 
     private static final String PREF_SALES_BUTTON = "pref_sales_button";
@@ -34,13 +38,39 @@ public class Records extends Fragment {
         return binding.getRoot();
 
     }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+        recordsViewModel = new ViewModelProvider(requireActivity()).get(RecordsViewModel.class);
+
+        binding.buttonRecordSales.setOnClickListener(view1 -> {
+            recordsViewModel.setMode("sales");
+            NavHostFragment.findNavController(Records.this)
+                    .navigate(R.id.to_view);
+        });
+
+        binding.buttonRecordStock.setOnClickListener(view2 -> {
+            recordsViewModel.setMode("stock");
+            NavHostFragment.findNavController(Records.this)
+                    .navigate(R.id.to_view);
+        });
+    }
+
+    /*
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         sharedPreferences = requireContext().getSharedPreferences("Onboarding", getContext().MODE_PRIVATE);
 
         binding.buttonRecordSales.setOnClickListener(view1 -> {
 
+            ViewRecords salesFragment = new ViewRecords();
+            Bundle bundle = new Bundle();
+            bundle.putString("mode", "sales");
+            salesFragment.setArguments(bundle);
+            System.out.println("----------------ARGUMENTS IS-------------------");
+            System.out.println(this.getArguments());
+            System.out.println(salesFragment.getArguments());
             showExplanationDialog("Sales Button", "This button allows you to view the sales you have made.", PREF_SALES_BUTTON);
              NavHostFragment.findNavController(Records.this)
                    .navigate(R.id.to_view);
@@ -48,6 +78,12 @@ public class Records extends Fragment {
 
         binding.buttonRecordStock.setOnClickListener(view2 -> {
 
+            ViewRecords stockFragment = new ViewRecords();
+            Bundle bundle = new Bundle();
+            bundle.putString("mode", "stock");
+            stockFragment.setArguments(bundle);
+            System.out.println("----------------ARGUMENTS IS-------------------");
+            System.out.println(stockFragment.getArguments());
             showExplanationDialog("Stock Button", "This button allows you to view the stock available.", PREF_STOCK_BUTTON);
              NavHostFragment.findNavController(Records.this)
                    .navigate(R.id.to_view);
@@ -55,6 +91,8 @@ public class Records extends Fragment {
         });
 
     }
+
+     */
 
     private void showExplanationDialog(String title, String explanation, String prefKey) {
         boolean explanationShown = sharedPreferences.getBoolean(prefKey, false);

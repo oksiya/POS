@@ -64,6 +64,8 @@ public class Purchase extends Fragment {
         buttons.add(binding.cat8);
         buttons.add(binding.cat9);
         buttons.add(binding.cat10);
+        buttons.add(binding.cat11);
+        buttons.add(binding.cat12);
 
 
         try (SQLHelper database = new SQLHelper(this.getContext())){
@@ -77,6 +79,9 @@ public class Purchase extends Fragment {
 
             for(int i = 0; i < buttons.size(); i++){
                 int finalI = i;
+                if(buttons.get(i).getText().equals("Category")){
+                    buttons.get(i).setVisibility(View.GONE);
+                }
                 buttons.get(i).setOnClickListener(view1 -> {
 
                     try{
@@ -96,33 +101,31 @@ public class Purchase extends Fragment {
             }
 
             binding.done.setOnClickListener(view110 -> {
-
                 double dblTest = HelperFunctions.stringToDouble(total(containerItem));
                 Toast toast;
-                if(dblTest > 0){
-
+                if (dblTest > 0) {
                     toast = Toast.makeText(getActivity(), "Cash is Short!", Toast.LENGTH_SHORT);
                     toast.show();
-                }else {
-
-                    toast = Toast.makeText(getActivity(), "Change is "+ binding.textView.getText(), Toast.LENGTH_SHORT);
+                } else {
+                    toast = Toast.makeText(getActivity(), "Change is " + binding.textView.getText(), Toast.LENGTH_SHORT);
                     toast.show();
 
                     boolean insert = false;
-                    int counter = 0;
-                    for (Item i:
-                            containerItem) {
+                    int deleteCount = 1; // Specify the number of items to delete
+                    for (int counter = 0; counter < containerItem.size() - 1; counter++) {
+                        Item i = containerItem.get(counter);
 
-                        if (counter == containerItem.size() - 1) {
+                        if (i.getName().equals("CASH")) {
                             continue;
                         }
-                       insert = database.recordTransaction("Sale", HelperFunctions.getDate(),
-                                i.getCategory(), i.getName(), i.getCode(),i.getPrice(), null);
 
-                        counter++;
+                        insert = database.recordTransaction("Sale", HelperFunctions.getDate(),
+                                i.getCategory(), i.getName(), i.getCode(), i.getPrice(), null);
+
+                        database.deleteRecord(i.getCode(), deleteCount);
                     }
 
-                    if(insert){
+                    if (insert) {
                         toast = Toast.makeText(getActivity(), "Items Recorded!", Toast.LENGTH_SHORT);
                         toast.show();
                         containerItem.clear();
@@ -131,16 +134,13 @@ public class Purchase extends Fragment {
                         String defaultText = getResources().getString(R.string.total);
                         binding.textView.setText(defaultText);
                         binding.textView.setTextColor(Color.LTGRAY);
-                    }else {
-
-                        toast = Toast.makeText(getActivity(), "ERROR : Could Not Record!", Toast.LENGTH_SHORT);
+                    } else {
+                        toast = Toast.makeText(getActivity(), "ERROR: Could Not Record!", Toast.LENGTH_SHORT);
                         toast.show();
-
                     }
-
-
                 }
             });
+
 
 
 
@@ -245,7 +245,8 @@ public class Purchase extends Fragment {
         String name = "CASH";
         int code = 0;
         double price = (-MakePayment.sum);
-        return new Item(null, name, code, price);
+        int quantity = 0;
+        return new Item(null, name, code, price, quantity);
     }
 
 
@@ -272,4 +273,3 @@ public class Purchase extends Fragment {
 
 
 }
-

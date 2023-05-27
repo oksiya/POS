@@ -11,7 +11,8 @@ public class SSRecords {
     private  int code;
     private  Double debit;
     private  Double credit;
-    private  double price;
+    private  Double price;
+    private int quantity;
 
 
     public SSRecords(String account, String date, String category, String name, int code, Double debit, Double credit) {
@@ -24,12 +25,13 @@ public class SSRecords {
         this.credit = credit;
     }
 
-    public SSRecords(String date, String category, String name, int code, double price) {
+    public SSRecords(String category, String name, int code, Double price, int quantity) {
         this.date = date;
         this.category = category;
         this.name = name;
         this.code = code;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public String getAccount() {
@@ -88,7 +90,19 @@ public class SSRecords {
         this.credit = credit;
     }
 
-    public double getPrice() {
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getPrice() {
         return price;
     }
 
@@ -97,8 +111,12 @@ public class SSRecords {
     }
 
 
-    @Override
-    public String toString() {
+    public String toSales() {
         return account + " " +date + " " +category + " " +name + " " +code + " " +debit + " " +credit;
     }
+
+    public String toStock() {
+        return category + " " +name + " " +code + " " +price;
+    }
+
 }

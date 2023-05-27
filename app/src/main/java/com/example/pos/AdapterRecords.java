@@ -14,8 +14,7 @@ import java.util.List;
 
 public class AdapterRecords extends ArrayAdapter<SSRecords> {
 
-    private static class SalesHolder{
-
+    private static class SalesHolder {
         TextView account;
         TextView date;
         TextView category;
@@ -26,23 +25,26 @@ public class AdapterRecords extends ArrayAdapter<SSRecords> {
         TextView credit;
     }
 
-    private static class StockHolder{
-
+    private static class StockHolder {
+        TextView quantity;
         TextView category;
         TextView date;
         TextView name;
         TextView code;
         TextView price;
     }
-    private  Context context;
-    private  int resource;
-    private List<SSRecords> objects;
 
-    public AdapterRecords(@NonNull Context context, int resource, @NonNull ArrayList<SSRecords> objects) {
+    private Context context;
+    private int resource;
+    private List<SSRecords> objects;
+    private boolean isSalesMode;
+
+    public AdapterRecords(@NonNull Context context, int resource, @NonNull ArrayList<SSRecords> objects, boolean isSalesMode) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
         this.objects = objects;
+        this.isSalesMode = isSalesMode;
     }
 
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -52,60 +54,71 @@ public class AdapterRecords extends ArrayAdapter<SSRecords> {
         String category = getItem(position).getCategory();
         String name = getItem(position).getName();
         int code = getItem(position).getCode();
-        double price = getItem(position).getPrice();
+        Double price = getItem(position).getPrice();
         Double debit = getItem(position).getDebit();
         Double credit = getItem(position).getCredit();
-
-        SSRecords stock = new SSRecords(date, category, name,code,price);
-        SSRecords sales = new SSRecords(account, date, category, name,code,debit, credit);
+        int quantity = getItem(position).getQuantity();
 
         AdapterRecords.SalesHolder salesHolder;
         AdapterRecords.StockHolder stockHolder;
 
-        if(convertView == null){
-            LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(resource, parent, false);
+        if (isSalesMode) {
 
-            stockHolder = new AdapterRecords.StockHolder();
-            stockHolder.date = convertView.findViewById(R.id.dateStock);
-            stockHolder.category = convertView.findViewById(R.id.categoryStock);
-            stockHolder.name = convertView.findViewById(R.id.nameStock);
-            stockHolder.code = convertView.findViewById(R.id.codeStock);
-            stockHolder.price = convertView.findViewById(R.id.priceStock);
+            if (convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(context);
+                convertView = inflater.inflate(resource, parent, false);
 
-            salesHolder = new AdapterRecords.SalesHolder();
-            salesHolder.account = convertView.findViewById(R.id.account);
-            salesHolder.date = convertView.findViewById(R.id.date);
-            salesHolder.category = convertView.findViewById(R.id.category);
-            salesHolder.name = convertView.findViewById(R.id.name);
-            salesHolder.code = convertView.findViewById(R.id.code);
-            salesHolder.debit = convertView.findViewById(R.id.debit);
-            salesHolder.credit = convertView.findViewById(R.id.credit);
+                salesHolder = new AdapterRecords.SalesHolder();
+                salesHolder.account = convertView.findViewById(R.id.account);
+                salesHolder.date = convertView.findViewById(R.id.date);
+                salesHolder.category = convertView.findViewById(R.id.category);
+                salesHolder.name = convertView.findViewById(R.id.name);
+                salesHolder.code = convertView.findViewById(R.id.code);
+                salesHolder.debit = convertView.findViewById(R.id.debit);
+                salesHolder.credit = convertView.findViewById(R.id.credit);
+
+                convertView.setTag(salesHolder);
+            } else {
+                salesHolder = (AdapterRecords.SalesHolder) convertView.getTag();
+            }
+
+            salesHolder.account.setText(account);
+            salesHolder.date.setText(date);
+            salesHolder.category.setText(category);
+            salesHolder.name.setText(name);
+            salesHolder.code.setText(String.valueOf(code));
+            salesHolder.debit.setText(String.valueOf(debit));
+            salesHolder.credit.setText(String.valueOf(credit));
+        } else {
+            if (convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(context);
+                convertView = inflater.inflate(resource, parent, false);
+
+                stockHolder = new AdapterRecords.StockHolder();
+                stockHolder.date = convertView.findViewById(R.id.dateStock);
+                stockHolder.category = convertView.findViewById(R.id.categoryStock);
+                stockHolder.name = convertView.findViewById(R.id.nameStock);
+                stockHolder.code = convertView.findViewById(R.id.codeStock);
+                stockHolder.price = convertView.findViewById(R.id.priceStock);
+                stockHolder.quantity = convertView.findViewById(R.id.quantityStock);
 
 
-            convertView.setTag(salesHolder);
-        }else {
-            salesHolder = (AdapterRecords.SalesHolder) convertView.getTag();
-           // stockHolder = (AdapterRecords.StockHolder) convertView.getTag();
+                convertView.setTag(stockHolder);
+            } else {
+                stockHolder = (AdapterRecords.StockHolder) convertView.getTag();
+            }
+
+            stockHolder.date.setText(date);
+            stockHolder.category.setText(category);
+            stockHolder.name.setText(name);
+            stockHolder.code.setText(String.valueOf(code));
+            stockHolder.price.setText(String.valueOf(price));
+            stockHolder.quantity.setText(String.valueOf(quantity));
+
 
         }
-
-        //stockHolder.date.setText(stock.getDate());
-        //stockHolder.category.setText(stock.getCategory());
-        //stockHolder.name.setText(stock.getName());
-        //stockHolder.code.setText(HelperFunctions.intToString(stock.getCode()));
-        //stockHolder.price.setText(HelperFunctions.doubleToString(stock.getDebit()));
-
-
-        salesHolder.account.setText(sales.getAccount());
-        salesHolder.date.setText(sales.getDate());
-        salesHolder.category.setText(sales.getCategory());
-        salesHolder.name.setText(sales.getName());
-        salesHolder.code.setText(HelperFunctions.intToString(sales.getCode()));
-        salesHolder.debit.setText(HelperFunctions.doubleToString(sales.getDebit()));
-        salesHolder.credit.setText(HelperFunctions.doubleToString(sales.getCredit()));
-
 
         return convertView;
     }
 }
+

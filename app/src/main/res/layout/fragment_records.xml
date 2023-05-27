@@ -7,25 +7,30 @@
     tools:context=".PettyCash">
 
 
-    <Button
-        android:id="@+id/button_record_stock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/record_stock"
-        app:layout_constraintBottom_toBottomOf="@id/button_record_sales"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_record_sales"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/record_sales"
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="360dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/button_record_stock" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button_record_stock"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:text="@string/record_stock" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/button_record_sales"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:text="@string/record_sales" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

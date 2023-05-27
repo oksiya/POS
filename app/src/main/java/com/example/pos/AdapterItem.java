@@ -42,8 +42,9 @@ public class AdapterItem extends ArrayAdapter<Item> {
             String name = getItem(position).getName();
             int code = getItem(position).getCode();
             double price = getItem(position).getPrice();
+            int quantity = getItem(position).getQuantity();
 
-            Item item = new Item(category, name, code, price);
+            Item item = new Item(category, name, code, price, quantity);
 
             ViewHolder holder;
 

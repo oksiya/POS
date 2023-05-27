@@ -9,48 +9,55 @@
 
     <ListView
         android:id="@+id/recordsViewer"
-        android:layout_width="396dp"
-        android:layout_height="573dp"
+        android:layout_width="397dp"
+        android:layout_height="526dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/guideline24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ListView>
+        app:layout_constraintTop_toTopOf="@+id/include2">
 
-    <include layout="@layout/sales_records"/>
-    <include layout="@layout/sales_records"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    </ListView>
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/sales_records" />
+
+
+    <LinearLayout
+        android:layout_width="215dp"
+        android:layout_height="176dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="203dp" />
-
-    <Button
-        android:id="@+id/done"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:text="@string/done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline23"
-        app:layout_constraintTop_toTopOf="@+id/guideline24" />
-
-    <Button
-        android:id="@+id/download"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:text="@string/download"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline24" />
+        app:layout_constraintTop_toBottomOf="@+id/recordsViewer">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="576dp" />
+        <Button
+            android:id="@+id/updatePrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/update_price" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Button
+            android:id="@+id/download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/download" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/done" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,8 +55,12 @@ public class CategoryFragment extends Fragment {
         try (SQLHelper database = new SQLHelper(this.getContext())){
             for(int i = 0; i < iButtons.size(); i++){
                 int finalI = i;
+                String name = iButtons.get(finalI).getText().toString();
+                if(name.equals("Item")){
+                    iButtons.get(finalI).setVisibility(View.GONE);
+                }
                 iButtons.get(i).setOnClickListener(view1 -> {
-                    String name = iButtons.get(finalI).getText().toString();
+
                     if(name.equals("Item")){
                         Toast toast = Toast.makeText(getActivity(), "ERROR : Invalid Selection!", Toast.LENGTH_SHORT);
                         toast.show();

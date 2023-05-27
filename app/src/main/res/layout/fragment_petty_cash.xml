@@ -7,25 +7,30 @@
     tools:context=".PettyCash">
 
 
-    <Button
-        android:id="@+id/button_add_cash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_cash"
-        app:layout_constraintBottom_toBottomOf="@id/button_draw_cash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_draw_cash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/draw_cash"
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="360dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/button_add_cash" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button_add_cash"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:text="@string/add_cash" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/button_draw_cash"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:text="@string/draw_cash" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
