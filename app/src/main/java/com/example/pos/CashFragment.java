@@ -33,12 +33,11 @@ public class CashFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.button.setText(PettyCash.pettyCash);
-
         binding.button.setOnClickListener(view1 -> {
 
             String account = binding.account.getText().toString();
-            String strAmount = binding.amount.getText().toString();
-            double amount;
+            String strAmount = binding.amount.getText().toString().trim();
+            Double amount = HelperFunctions.stringToDouble(strAmount);
 
             if(TextUtils.isEmpty(account) || TextUtils.isEmpty(strAmount)){
 
@@ -49,9 +48,7 @@ public class CashFragment extends Fragment {
 
                 try(SQLHelper database = new SQLHelper(this.getContext())) {
                     boolean record;
-                    amount = HelperFunctions.stringToDouble(strAmount);
                     if(binding.button.getText().equals("ADD")){
-
                         record = database.recordTransaction("Add Cash", HelperFunctions.getDate(),
                                 "PETTY CASH", account, 101, amount, null);
                         Toast toast;

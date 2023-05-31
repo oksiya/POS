@@ -271,6 +271,8 @@ public class SQLHelper extends SQLiteOpenHelper {
     }
 
 
+
+
     public boolean insertCategory(String category){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();

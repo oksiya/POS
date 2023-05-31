@@ -61,7 +61,7 @@ public class MakePayment extends Fragment {
 
                 tempMoney.add(arrMoney[finalI]);
                 sum = HelperFunctions.sum(tempMoney);
-                String strMoney = HelperFunctions.doubleToString(sum);
+                String strMoney = HelperFunctions.roundToTwoDecimalPlaces(sum);
                 binding.editMoneyBox.setText(strMoney);
 
                 });

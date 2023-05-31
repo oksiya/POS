@@ -233,7 +233,7 @@ public class Purchase extends Fragment {
              arrItem) {
             if(i!=null){
                 sum = sum + i.getPrice();
-                strSum = HelperFunctions.doubleToString(sum);
+                strSum = HelperFunctions.roundToTwoDecimalPlaces(sum);
             }
 
         }

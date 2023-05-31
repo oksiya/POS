@@ -24,6 +24,8 @@ public class Options extends Fragment {
     private static final String PREF_PETTY_CASH_BUTTON = "pref_petty_cash_button";
     private static final String PREF_RECEIVE_STOCK_BUTTON = "pref_receive_stock_button";
     private static final String PREF_RECORDS_BUTTON = "pref_records_button";
+    private static final String PREF_ANALYSIS_BUTTON = "pref_analysis_button";
+    private static final String PREF_CUSTOMER_MANAGEMENT_BUTTON = "pref_customer_management_button";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,6 +70,22 @@ public class Options extends Fragment {
             public void onClick(View view) {
                 showExplanationDialog("Records Button", "Selecting this button provides access to various sales and transaction records.", PREF_RECORDS_BUTTON);
                 NavHostFragment.findNavController(Options.this).navigate(R.id.option_to_records);
+            }
+        });
+
+        binding.buttonAnalysis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showExplanationDialog("Analysis Button", "By clicking this button, you can view the analysis of your business.", PREF_ANALYSIS_BUTTON);
+                NavHostFragment.findNavController(Options.this).navigate(R.id.to_view_analysis);
+            }
+        });
+
+        binding.buttonCustomerManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showExplanationDialog("Customer Management Button", "By clicking this button, you can manage your customers who on credit.", PREF_CUSTOMER_MANAGEMENT_BUTTON);
+                NavHostFragment.findNavController(Options.this).navigate(R.id.option_to_cash);
             }
         });
     }

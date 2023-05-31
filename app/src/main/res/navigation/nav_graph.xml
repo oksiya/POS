@@ -24,6 +24,9 @@
         <action
             android:id="@+id/option_to_receive"
             app:destination="@id/ReceiveStockFragment" />
+        <action
+            android:id="@+id/to_view_analysis"
+            app:destination="@+id/Analysis"/>
 
     </fragment>
 
@@ -121,6 +124,20 @@
         <action
             android:id="@+id/after_view"
             app:destination="@+id/OptionFragment"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/Analysis"
+        android:name="com.example.pos.Analysis"
+        android:label="@string/analysis_fragment"
+        tools:layout="@layout/fragment_analysis">
+
+        <action
+            android:id="@+id/after_analysis"
+            app:destination="@+id/OptionFragment"/>
+
 
 
     </fragment>

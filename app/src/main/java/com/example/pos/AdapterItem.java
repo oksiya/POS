@@ -64,7 +64,8 @@ public class AdapterItem extends ArrayAdapter<Item> {
 
             holder.name.setText(item.getName());
             holder.code.setText(HelperFunctions.intToString(item.getCode()));
-            holder.price.setText(HelperFunctions.doubleToString(item.getPrice()));
+            String strPriceRounded = HelperFunctions.roundToTwoDecimalPlaces(item.getPrice());
+            holder.price.setText(strPriceRounded);
 
             return convertView;
         }

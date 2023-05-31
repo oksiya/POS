@@ -3,6 +3,7 @@ package com.example.pos;
 
 import android.annotation.SuppressLint;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,9 +15,11 @@ public class HelperFunctions {
         try {
             if(str == null){
                 str = "0.0";
-                dbl = Double.parseDouble(str);
+                double tempDbl = Double.parseDouble(str);
+                dbl = Math.round(tempDbl * 100.0) / 100.0;
             }else {
-                dbl = Double.parseDouble(str);
+                double tempDbl = Double.parseDouble(str);
+                dbl = Math.round(tempDbl * 100.0) / 100.0;
             }
 
 
@@ -56,6 +59,11 @@ public class HelperFunctions {
             total = total + dbl;
         }
         return total;
+    }
+
+    public static String roundToTwoDecimalPlaces(double value) {
+        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        return decimalFormat.format(value);
     }
 
     public static String intToString(int integer){
