@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    tools:ignore="ExtraText">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="25">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/client_view_titte"
+                android:layout_width="match_parent"
+                android:textSize="25sp"
+                android:textAllCaps="true"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_weight="40"/>
+
+            <TextView
+                android:id="@+id/client_view_initials"
+                android:layout_width="match_parent"
+                android:textSize="25sp"
+                android:textAllCaps="true"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_weight="40"/>
+
+            <TextView
+                android:id="@+id/client_view_surname"
+                android:layout_width="match_parent"
+                android:textSize="25sp"
+                android:textAllCaps="true"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_weight="20"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/client_view_number"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center"
+            tools:ignore="TextSizeCheck" />
+    </LinearLayout>
+
+    <TextView
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="30sp"
+        android:id="@+id/client_view_amount"
+        android:layout_weight="75"/>
+</LinearLayout>

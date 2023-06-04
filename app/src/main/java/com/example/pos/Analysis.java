@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -112,8 +113,8 @@ public class Analysis extends Fragment {
         binding.btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // NavHostFragment.findNavController(FirstFragment.this)
-                //       .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                 NavHostFragment.findNavController(Analysis.this)
+                       .navigate(R.id.after_analysis);
             }
         });
     }

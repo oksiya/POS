@@ -1,5 +1,7 @@
 package com.example.pos;
 
+import java.util.ArrayList;
+
 public class Item {
 
     private String category;
@@ -7,6 +9,7 @@ public class Item {
     private int code;
     private double price;
     private int quantity;
+    private int quantitySelected;
 
 
     public Item(String category, String name, int code, double price, int quantity) {
@@ -15,6 +18,7 @@ public class Item {
         this.code = code;
         this.price = price;
         this.quantity = quantity;
+        this.quantitySelected = 0;
     }
 
     public String getCategory() {
@@ -52,6 +56,14 @@ public class Item {
         return quantity;
     }
 
+    public int getQuantitySelected() {
+        return quantitySelected;
+    }
+
+    public void setQuantitySelected(int quantitySelected) {
+        this.quantitySelected = quantitySelected;
+    }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
@@ -60,6 +72,15 @@ public class Item {
     {
         return name.toUpperCase() + "\t" + code + "\t "
                 + price;
+    }
+
+
+    public String toReceipt() {
+        String columnFormat = "%-15s %-10s\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format(columnFormat, "Name", "Age"));
+        sb.append(String.format(columnFormat, name.toUpperCase(), price));
+        return sb.toString();
     }
 
     public String toConfirm()

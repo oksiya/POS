@@ -87,6 +87,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:text="@string/two_hundred_rands" />
+
+            <Button
+                android:id="@+id/on_credit_button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="On Credit" />
         </LinearLayout>
     </ScrollView>
 
@@ -96,6 +102,7 @@
         android:layout_height="80dp"
         android:ems="10"
         android:hint="@string/enter_money"
+        android:textAlignment="center"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,11 +130,14 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="530dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/done"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/done"
+        android:src="@drawable/check"
+        android:backgroundTint="@color/blue"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline18"
         app:layout_constraintStart_toStartOf="@+id/guideline17"
@@ -140,11 +150,14 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="615dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/clear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/clear"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/clear"
+        android:src="@drawable/clear"
+        android:backgroundTint="@color/blue"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline17"
         app:layout_constraintStart_toStartOf="@+id/guideline19"

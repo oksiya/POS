@@ -35,11 +35,14 @@
             android:hint="@string/amount" />
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/button"
         android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:text="@string/done"
+        android:layout_height="50dp"
+        android:contentDescription="@string/done"
+        android:src="@drawable/check"
+        android:backgroundTint="@color/blue"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/guideline21"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

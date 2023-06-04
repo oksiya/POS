@@ -32,7 +32,7 @@ public class CashFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.button.setText(PettyCash.pettyCash);
+        binding.button.setTag(PettyCash.pettyCash);
         binding.button.setOnClickListener(view1 -> {
 
             String account = binding.account.getText().toString();
@@ -48,7 +48,7 @@ public class CashFragment extends Fragment {
 
                 try(SQLHelper database = new SQLHelper(this.getContext())) {
                     boolean record;
-                    if(binding.button.getText().equals("ADD")){
+                    if(binding.button.getTag().equals("ADD")){
                         record = database.recordTransaction("Add Cash", HelperFunctions.getDate(),
                                 "PETTY CASH", account, 101, amount, null);
                         Toast toast;

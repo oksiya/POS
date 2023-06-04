@@ -1,9 +1,11 @@
 package com.example.pos;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pos.databinding.FragmentMakePaymentBinding;
@@ -62,7 +65,7 @@ public class MakePayment extends Fragment {
                 tempMoney.add(arrMoney[finalI]);
                 sum = HelperFunctions.sum(tempMoney);
                 String strMoney = HelperFunctions.roundToTwoDecimalPlaces(sum);
-                binding.editMoneyBox.setText(strMoney);
+                binding.editMoneyBox.setText("R "+strMoney);
 
                 });
 
@@ -101,6 +104,13 @@ public class MakePayment extends Fragment {
                 binding.editMoneyBox.getText().clear();
                 tempMoney.clear();
         });
+
+        binding.onCreditButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
 
@@ -108,6 +118,76 @@ public class MakePayment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+
+    private void showFindDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        View dialogView = getLayoutInflater().inflate(R.layout.on_credit_payment, null);
+        builder.setView(dialogView);
+        builder.setCancelable(false);
+
+        final EditText editNumberPay = dialogView.findViewById(R.id.editTextOnCredit);
+        Button buttonSearch = dialogView.findViewById(R.id.buttonSearch);
+        Button buttonCancelSearch = dialogView.findViewById(R.id.buttonCancelSearch);
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phoneEdit = editNumberPay.getText().toString().trim();
+
+                SQLHelper database = new SQLHelper(getContext());
+                Customer customer = database.getCustomerByPhone(phoneEdit);
+
+                boolean exists = database.checkCustomerExists(phoneEdit);
+                if(exists){
+
+
+                    Toast.makeText(getContext(), "Client Found", Toast.LENGTH_SHORT).show();
+                    // Show confirmation dialog
+                    AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(getContext());
+                    confirmBuilder.setTitle("Confirm Client Details");
+                    confirmBuilder.setMessage(customer.toString());
+                    confirmBuilder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+
+
+                            binding.editMoneyBox.setText(customer.getName());
+
+                            onResume();
+                            dialogInterface.dismiss();
+                            dialog.dismiss();
+                        }
+                    });
+                    confirmBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    AlertDialog confirmDialog = confirmBuilder.create();
+                    confirmDialog.show();
+
+                }else{
+
+                    Toast.makeText(getContext(), "ERROR: Client Not Found", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
+
+        buttonCancelSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
 
 }

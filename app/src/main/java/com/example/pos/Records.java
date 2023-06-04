@@ -57,43 +57,6 @@ public class Records extends Fragment {
         });
     }
 
-    /*
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        sharedPreferences = requireContext().getSharedPreferences("Onboarding", getContext().MODE_PRIVATE);
-
-        binding.buttonRecordSales.setOnClickListener(view1 -> {
-
-            ViewRecords salesFragment = new ViewRecords();
-            Bundle bundle = new Bundle();
-            bundle.putString("mode", "sales");
-            salesFragment.setArguments(bundle);
-            System.out.println("----------------ARGUMENTS IS-------------------");
-            System.out.println(this.getArguments());
-            System.out.println(salesFragment.getArguments());
-            showExplanationDialog("Sales Button", "This button allows you to view the sales you have made.", PREF_SALES_BUTTON);
-             NavHostFragment.findNavController(Records.this)
-                   .navigate(R.id.to_view);
-        });
-
-        binding.buttonRecordStock.setOnClickListener(view2 -> {
-
-            ViewRecords stockFragment = new ViewRecords();
-            Bundle bundle = new Bundle();
-            bundle.putString("mode", "stock");
-            stockFragment.setArguments(bundle);
-            System.out.println("----------------ARGUMENTS IS-------------------");
-            System.out.println(stockFragment.getArguments());
-            showExplanationDialog("Stock Button", "This button allows you to view the stock available.", PREF_STOCK_BUTTON);
-             NavHostFragment.findNavController(Records.this)
-                   .navigate(R.id.to_view);
-
-        });
-
-    }
-
-     */
-
     private void showExplanationDialog(String title, String explanation, String prefKey) {
         boolean explanationShown = sharedPreferences.getBoolean(prefKey, false);
         if (!explanationShown) {

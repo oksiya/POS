@@ -14,7 +14,7 @@ public class HelperFunctions {
         double dbl = 0.0;
         try {
             if(str == null){
-                str = "0.0";
+                str = "0.00";
                 double tempDbl = Double.parseDouble(str);
                 dbl = Math.round(tempDbl * 100.0) / 100.0;
             }else {
@@ -64,6 +64,26 @@ public class HelperFunctions {
     public static String roundToTwoDecimalPlaces(double value) {
         DecimalFormat decimalFormat = new DecimalFormat("#0.00");
         return decimalFormat.format(value);
+    }
+
+    public static String toTwoDecimalPlaces(String value) {
+        try {
+            if(value == null){
+                value = "0.0";
+                double number = Double.parseDouble(value);
+                DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+                return decimalFormat.format(number);
+
+            }else {
+                double number = Double.parseDouble(value);
+                DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+                return decimalFormat.format(number);
+            }
+
+        } catch (NumberFormatException e) {
+            // Handle invalid input
+            return "Invalid Number";
+        }
     }
 
     public static String intToString(int integer){

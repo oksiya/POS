@@ -16,20 +16,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+        <ImageButton
             android:id="@+id/button_record_stock"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:text="@string/record_stock" />
+            android:contentDescription="@string/record_stock"
+            android:src="@drawable/stock"
+            android:backgroundTint="@color/blue"
+            android:scaleType="fitCenter"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_record_sales"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:text="@string/record_sales" />
+            android:contentDescription="@string/record_sales"
+            android:src="@drawable/sales"
+            android:backgroundTint="@color/blue"
+            android:scaleType="fitCenter"/>
     </LinearLayout>
 
 

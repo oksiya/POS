@@ -54,8 +54,8 @@ public class ReceiveStock extends Fragment {
         try (SQLHelper database = new SQLHelper(this.getContext())) {
             binding.receive.setOnClickListener(view1 -> {
                 // Retrieve the entered information
-                String category = binding.categoryGroup.getText().toString().trim();
-                String name = binding.itemName.getText().toString().trim();
+                String category = binding.categoryGroup.getText().toString().trim().toUpperCase();
+                String name = capitalizeFirstLetter(binding.itemName.getText().toString());
                 String strCode = binding.itemCode.getText().toString().trim();
                 String strPrice = binding.itemPrice.getText().toString().trim();
                 String strQuantity = binding.itemQuantity.getText().toString().trim();
@@ -83,6 +83,15 @@ public class ReceiveStock extends Fragment {
         }
 
     }
+
+    public String capitalizeFirstLetter(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+
+        return str.substring(0, 1).toUpperCase().trim() + str.substring(1).trim();
+    }
+
 
     @Override
     public void onDestroyView() {
@@ -120,6 +129,7 @@ public class ReceiveStock extends Fragment {
 
     private void showConfirmationDialog(Item item) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setCancelable(false);
         builder.setTitle("Confirm Item")
                 .setMessage("Please confirm the following item:\n\n" + item.toConfirm())
                 .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {

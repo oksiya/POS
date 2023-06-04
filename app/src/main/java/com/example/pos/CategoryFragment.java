@@ -72,12 +72,16 @@ public class CategoryFragment extends Fragment {
 
 
             }
+
+
             binding.done.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     NavHostFragment.findNavController(CategoryFragment.this)
                             .navigate(R.id.after_item);
+
+
                 }
             });
 

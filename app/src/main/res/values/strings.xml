@@ -10,6 +10,7 @@
     <string name="receive_fragment">Receive Stock</string>
     <string name="records_fragment">Records</string>
     <string name="analysis_fragment">Analysis View</string>
+    <string name="client_fragment">Customer Relationship Management</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 

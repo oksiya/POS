@@ -342,11 +342,14 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="535dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/done"
         android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:text="@string/done"
+        android:layout_height="50dp"
+        android:contentDescription="@string/done"
+        android:src="@drawable/check"
+        android:backgroundTint="@color/blue"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/guideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

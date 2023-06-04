@@ -78,11 +78,14 @@
 
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/receive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/receive_stock"
+        android:layout_width="215dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/receive_stock"
+        android:src="@drawable/check"
+        android:backgroundTint="@color/blue"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

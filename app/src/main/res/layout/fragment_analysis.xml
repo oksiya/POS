@@ -45,11 +45,14 @@
             android:layout_width="match_parent"
             android:layout_height="10dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnDone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/done" />
+            android:layout_height="50dp"
+            android:contentDescription="@string/done"
+            android:src="@drawable/check"
+            android:backgroundTint="@color/blue"
+            android:scaleType="fitCenter" />
 
     </LinearLayout>
 
@@ -58,6 +61,7 @@
         android:id="@+id/barChart"
         android:layout_width="386dp"
         android:layout_height="435dp"
+        android:background="@color/navy"
         app:layout_constraintBottom_toTopOf="@+id/guideline23"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,6 +72,7 @@
         android:id="@+id/pieChart"
         android:layout_width="386dp"
         android:layout_height="435dp"
+        android:background="@color/navy"
         app:layout_constraintBottom_toTopOf="@+id/guideline23"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +83,7 @@
         android:id="@+id/productChart"
         android:layout_width="386dp"
         android:layout_height="435dp"
+        android:background="@color/navy"
         app:layout_constraintBottom_toTopOf="@+id/guideline23"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

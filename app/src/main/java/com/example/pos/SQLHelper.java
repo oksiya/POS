@@ -3,11 +3,9 @@ package com.example.pos;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorIndexOutOfBoundsException;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +14,7 @@ public class SQLHelper extends SQLiteOpenHelper {
     private static final String DBNAME = "categoryDB";
     private  static final String TBL_CAT = "tableCategory";
     private  static final String TBL_1 = "table1";
+    private  static final String TBL_CLIENT = "tableClient";
     private  static  final String TBL_TRANS = "tableTransactions";
     private static final String CAT_COL = "category";
     private static final String NAME_COL = "name";
@@ -26,7 +25,10 @@ public class SQLHelper extends SQLiteOpenHelper {
     private static final String DATE_COL = "date";
     private static final String DEBIT_COL = "debit";
     private static final String CREDIT_COL = "credit";
-    private  CategoryFragment categoryFragment;
+    private static final String SURNAME_COL = "surname";
+    private static final String TITTLE_COL = "tittle";
+    private static final String PHONE_COL = "phone";
+    private static final String AMOUNT_COL = "amount";
 
 
 
@@ -45,6 +47,8 @@ public class SQLHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table tableTransactions (accName TEXT, date TEXT," +
                 " category TEXT, name TEXT, code INTEGER," +
                 " debit REAL, credit REAL)");
+        sqLiteDatabase.execSQL("create table tableClient (tittle TEXT, name TEXT," +
+                " surname TEXT, phone TEXT, amount REAL)");
 
 
     }
@@ -55,7 +59,157 @@ public class SQLHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("drop table if exists tableCategory");
         sqLiteDatabase.execSQL("drop table if exists table1");
         sqLiteDatabase.execSQL("drop table if exists tableTransactions");
+        sqLiteDatabase.execSQL("drop table if exists tableClient");
     }
+
+
+    public boolean insertClient(String tittle, String name, String surname, String numbers, double amount){
+        long result = 0;
+        try(SQLiteDatabase database = this.getWritableDatabase()){
+
+            ContentValues values = new ContentValues();
+            values.put(TITTLE_COL, tittle);
+            values.put(NAME_COL, name);
+            values.put(SURNAME_COL, surname);
+            values.put(PHONE_COL, numbers);
+            values.put(AMOUNT_COL, amount);
+
+
+            result = database.insert(TBL_CLIENT, null, values);
+        }catch (SQLException e){
+
+            e.printStackTrace();
+        }
+
+        return result != -1;
+    }
+
+    public Customer getCustomerByPhone(String phoneNumber) {
+        Customer customer = null;
+        try (SQLiteDatabase database = this.getReadableDatabase()) {
+            String selection = PHONE_COL + " = ?";
+            String[] selectionArgs = {phoneNumber};
+
+            Cursor cursor = database.query(TBL_CLIENT, null, selection, selectionArgs, null, null, null);
+            if (cursor.moveToFirst()) {
+                String tittle = cursor.getString(cursor.getColumnIndexOrThrow(TITTLE_COL));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(NAME_COL));
+                String surname = cursor.getString(cursor.getColumnIndexOrThrow(SURNAME_COL));
+                double amount = cursor.getDouble(cursor.getColumnIndexOrThrow(AMOUNT_COL));
+
+                customer = new Customer(tittle, name, surname, phoneNumber, amount);
+            }
+            cursor.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customer;
+    }
+
+
+    public boolean deleteClientByNumber(String phoneNumber) {
+        int result = 0;
+        try (SQLiteDatabase database = this.getWritableDatabase()) {
+            result = database.delete(TBL_CLIENT, PHONE_COL + " = ?", new String[]{phoneNumber});
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result > 0;
+    }
+
+    public boolean updateClientNumber(String oldPhoneNumber, String newPhoneNumber) {
+        int result = 0;
+        try (SQLiteDatabase database = this.getWritableDatabase()) {
+            ContentValues values = new ContentValues();
+            values.put(PHONE_COL, newPhoneNumber);
+
+            result = database.update(TBL_CLIENT, values, PHONE_COL + " = ?", new String[]{oldPhoneNumber});
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result > 0;
+    }
+
+    public boolean checkCustomerExists(String phoneNumber) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String[] projection = {PHONE_COL};
+        String selection = PHONE_COL + " = ?";
+        String[] selectionArgs = {phoneNumber};
+
+        Cursor cursor = database.query(
+                TBL_CLIENT,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        boolean exists = (cursor != null && cursor.getCount() > 0);
+
+        if (cursor != null) {
+            cursor.close();
+        }
+
+        return exists;
+    }
+
+
+    public boolean addAmountToClient(String phoneNumber, double amountToAdd) {
+        int result = 0;
+        try (SQLiteDatabase database = this.getWritableDatabase()) {
+            database.beginTransaction();
+
+            // Retrieve the current amount for the client
+            double currentAmount = 0;
+            String query = "SELECT " + AMOUNT_COL + " FROM " + TBL_CLIENT + " WHERE " + PHONE_COL + " = ?";
+            Cursor cursor = database.rawQuery(query, new String[]{phoneNumber});
+            if (cursor.moveToFirst()) {
+                currentAmount = cursor.getDouble(cursor.getColumnIndexOrThrow(AMOUNT_COL));
+            }
+            cursor.close();
+
+            // Update the amount by adding the specified amount
+            double updatedAmount = currentAmount - amountToAdd;
+            ContentValues values = new ContentValues();
+            values.put(AMOUNT_COL, updatedAmount);
+            result = database.update(TBL_CLIENT, values, PHONE_COL + " = ?", new String[]{phoneNumber});
+
+            database.setTransactionSuccessful();
+            database.endTransaction();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result > 0;
+    }
+
+
+
+    public ArrayList<Customer> getAllClients() {
+        ArrayList<Customer> clients = new ArrayList<>();
+        try (SQLiteDatabase database = this.getReadableDatabase()) {
+            Cursor cursor = database.query(TBL_CLIENT, null, null, null, null, null, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    String tittle = cursor.getString(cursor.getColumnIndexOrThrow(TITTLE_COL));
+                    String name = cursor.getString(cursor.getColumnIndexOrThrow(NAME_COL));
+                    String surname = cursor.getString(cursor.getColumnIndexOrThrow(SURNAME_COL));
+                    String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(PHONE_COL));
+                    double amount = cursor.getDouble(cursor.getColumnIndexOrThrow(AMOUNT_COL));
+
+                    Customer client = new Customer(tittle, name, surname, phoneNumber, amount);
+                    clients.add(client);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clients;
+    }
+
+
 
     public boolean insertItem(String category, String name, int code, double price, int quantity){
         long result = 0;
@@ -102,6 +256,26 @@ public class SQLHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    public void updateStockQuantity(int code, int quantity) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(QTY_COL, quantity);
+
+        database.update(TBL_1, values, CODE_COL + "=?", new String[]{String.valueOf(code)});
+    }
+
+    public boolean updateQuantity(int code, int newQuantity) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(QTY_COL, newQuantity);
+        int rowsAffected = database.update(TBL_1, values, CODE_COL + "=?", new String[]{String.valueOf(code)});
+        return rowsAffected > 0;
+    }
+
+
+
+
+
     public List<String> getAllCategories() {
         List<String> dataList = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
@@ -117,8 +291,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         return dataList;
     }
 
-    public List<Item> specificItems(String category){
-
+    public List<Item> specificItems(String category) {
         ArrayList<Item> items = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
         String[] projection = {
@@ -144,8 +317,13 @@ public class SQLHelper extends SQLiteOpenHelper {
         }
         cursor.close();
 
+        if (items.isEmpty()) {
+            deleteCategory(category);
+        }
+
         return items;
     }
+
 
     public ArrayList<SSRecords> getSalesData() {
         ArrayList<SSRecords> data = new ArrayList<>();
@@ -190,8 +368,6 @@ public class SQLHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    // Modify the deleteRecord() method in the SQLHelper class
-// Modify the deleteRecord() method in the SQLHelper class
     public void deleteRecord(int code, int deleteCount) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -227,6 +403,19 @@ public class SQLHelper extends SQLiteOpenHelper {
 
         return quantity;
     }
+    public int getStockQuantity(int itemCode) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT quantity FROM " + TBL_1 + " WHERE code = " + itemCode, null);
+        int quantity = 0;
+
+        if (cursor.moveToFirst()) {
+            quantity = cursor.getInt(cursor.getColumnIndexOrThrow("quantity"));
+        }
+
+        cursor.close();
+        return quantity;
+    }
+
 
     public Item selectedItem(String itemName){
 
@@ -270,9 +459,6 @@ public class SQLHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-
-
-
     public boolean insertCategory(String category){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -286,6 +472,15 @@ public class SQLHelper extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery("select * from tableCategory where category=?", new String[] {category});
         return cursor.getCount() > 0;
     }
+
+    private void deleteCategory(String category) {
+        SQLiteDatabase db = getWritableDatabase();
+        String selection = "category = ?";
+        String[] selectionArgs = { category };
+        db.delete("tableCategory", selection, selectionArgs);
+        db.close();
+    }
+
 
 
 }

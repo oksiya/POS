@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.pos.databinding.FragmentOptionsBinding;
 
@@ -41,6 +42,8 @@ public class Options extends Fragment {
         binding.buttonSell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast toast = Toast.makeText(getActivity(), "Purchase", Toast.LENGTH_SHORT);
+                toast.show();
                 showExplanationDialog("Sell Button", "This button allows you to process sales transactions for your products.", PREF_SELL_BUTTON);
                 NavHostFragment.findNavController(Options.this).navigate(R.id.option_to_sell);
             }
@@ -50,6 +53,8 @@ public class Options extends Fragment {
         binding.buttonPettyCash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast toast = Toast.makeText(getActivity(), "Petty Cash", Toast.LENGTH_SHORT);
+                toast.show();
                 showExplanationDialog("Petty Cash Button", "By clicking this button, you can manage your cash flow and handle small expenses.", PREF_PETTY_CASH_BUTTON);
                 NavHostFragment.findNavController(Options.this).navigate(R.id.option_to_cash);
             }
@@ -59,6 +64,8 @@ public class Options extends Fragment {
         binding.buttonReceiveStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast toast = Toast.makeText(getActivity(), "Receive Stock", Toast.LENGTH_SHORT);
+                toast.show();
                 showExplanationDialog("Receive Stock Button", "Tapping on this button allows you to manage the inventory of your products.", PREF_RECEIVE_STOCK_BUTTON);
                 NavHostFragment.findNavController(Options.this).navigate(R.id.option_to_receive);
             }
@@ -68,6 +75,8 @@ public class Options extends Fragment {
         binding.buttonRecords.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast toast = Toast.makeText(getActivity(), "Records", Toast.LENGTH_SHORT);
+                toast.show();
                 showExplanationDialog("Records Button", "Selecting this button provides access to various sales and transaction records.", PREF_RECORDS_BUTTON);
                 NavHostFragment.findNavController(Options.this).navigate(R.id.option_to_records);
             }
@@ -76,6 +85,8 @@ public class Options extends Fragment {
         binding.buttonAnalysis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast toast = Toast.makeText(getActivity(), "Analysis", Toast.LENGTH_SHORT);
+                toast.show();
                 showExplanationDialog("Analysis Button", "By clicking this button, you can view the analysis of your business.", PREF_ANALYSIS_BUTTON);
                 NavHostFragment.findNavController(Options.this).navigate(R.id.to_view_analysis);
             }
@@ -84,8 +95,10 @@ public class Options extends Fragment {
         binding.buttonCustomerManagement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast toast = Toast.makeText(getActivity(), "Customer Management", Toast.LENGTH_SHORT);
+                toast.show();
                 showExplanationDialog("Customer Management Button", "By clicking this button, you can manage your customers who on credit.", PREF_CUSTOMER_MANAGEMENT_BUTTON);
-                NavHostFragment.findNavController(Options.this).navigate(R.id.option_to_cash);
+                NavHostFragment.findNavController(Options.this).navigate(R.id.to_customer);
             }
         });
     }

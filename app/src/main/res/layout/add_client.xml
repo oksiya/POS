@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+
+    <EditText
+        android:id="@+id/client_add_tittle"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:ems="10"
+        android:hint="Title"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/client_add_tittle">
+
+        <EditText
+            android:id="@+id/client_add_name"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:ems="10"
+            android:hint="@string/item_name"
+            android:inputType="textPersonName"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/client_add_surname"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Surname"
+            android:inputType="textPersonName"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/client_add_phone"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:inputType="number"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="416dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <ImageButton
+            android:id="@+id/cancel_adding"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue"
+            android:contentDescription="@string/clear"
+            android:scaleType="fitCenter"
+            android:src="@drawable/clear" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/adding_client"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue"
+            android:contentDescription="Add client"
+            android:scaleType="fitCenter"
+            android:src="@drawable/check" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

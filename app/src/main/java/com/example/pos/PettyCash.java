@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.pos.databinding.FragmentPettyCashBinding;
 
@@ -40,6 +41,8 @@ public class PettyCash extends Fragment {
 
         binding.buttonAddCash.setOnClickListener(view1 -> {
             pettyCash = "ADD";
+            Toast toast = Toast.makeText(getActivity(), "Add Cash", Toast.LENGTH_SHORT);
+            toast.show();
             showExplanationDialog("Add Cash Button", "This button allows you to input money that belong to the business.", PREF_ADD_CASH_BUTTON);
             NavHostFragment.findNavController(PettyCash.this)
                    .navigate(R.id.to_petty_cash);
@@ -47,6 +50,8 @@ public class PettyCash extends Fragment {
 
         binding.buttonDrawCash.setOnClickListener(view2 -> {
             pettyCash = "WITHDRAW";
+            Toast toast = Toast.makeText(getActivity(), "Withdraw Cash", Toast.LENGTH_SHORT);
+            toast.show();
             showExplanationDialog("Withdraw Cash Button", "This button allows you to take out money out of the business for expenses.", PREF_WITHDRAW_CASH_BUTTON);
             NavHostFragment.findNavController(PettyCash.this)
                    .navigate(R.id.to_petty_cash);

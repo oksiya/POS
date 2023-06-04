@@ -16,20 +16,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+        <ImageButton
             android:id="@+id/button_add_cash"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:text="@string/add_cash" />
+            android:contentDescription="@string/add_cash"
+            android:src="@drawable/addcash"
+            android:backgroundTint="@color/blue"
+            android:scaleType="fitCenter"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_draw_cash"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:text="@string/draw_cash" />
+            android:contentDescription="@string/draw_cash"
+            android:src="@drawable/withdrawal"
+            android:backgroundTint="@color/blue"
+            android:scaleType="fitCenter"/>
     </LinearLayout>
 
 

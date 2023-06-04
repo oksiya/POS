@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".ViewRecords">
 
 
     <ListView
@@ -12,6 +12,7 @@
         android:layout_width="397dp"
         android:layout_height="526dp"
         android:orientation="vertical"
+        android:background="@color/navy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/include2">
@@ -53,11 +54,14 @@
             android:layout_width="match_parent"
             android:layout_height="10dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/done"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/done" />
+            android:layout_height="50dp"
+            android:contentDescription="@string/done"
+            android:src="@drawable/check"
+            android:backgroundTint="@color/blue"
+            android:scaleType="fitCenter"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

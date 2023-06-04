@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/client_number_pay"
+        android:layout_width="match_parent"
+        android:inputType="number"
+        android:layout_height="50dp"
+        android:hint="Client Number" />
+
+    <EditText
+        android:id="@+id/client_amount_pay"
+        android:layout_width="match_parent"
+        android:inputType="numberDecimal"
+        android:layout_height="50dp"
+        android:hint="Amount" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/pay_client_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Pay" />
+
+        <Space
+            android:layout_width="15dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/cancel_number_pay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</LinearLayout>
